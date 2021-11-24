@@ -18,13 +18,13 @@ export default {
     const userSelection = ref([]);
     const userCanFlipCard = ref(true);
     const timerCount = ref(120);
-    const userMoved = ref(0);
-    const userMoveAllowed = 16;
+    const userMoved = ref(1);
+    const userMoveAllowed = 17;
     var timerCountInterval = "";
 
     const startNewGame = () => {
       timerCount.value = 120;
-      userMoved.value = 0
+      userMoved.value = 1
       if (newPlayer) {
         startGame();
         if (timerCountInterval) clearInterval(timerCountInterval);
@@ -74,7 +74,7 @@ export default {
             userCanFlipCard.value = true;
           } else {
             setTimeout(() => {
-              if (userMoved.value > userMoveAllowed){
+              if (userMoved.value >= userMoveAllowed){
                 alert("Game Over")
                
                 restartGame()
